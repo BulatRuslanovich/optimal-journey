@@ -53,13 +53,13 @@ public class ZeroOneKnapsack implements Solution {
 			}
 		}
 
-		for (int k = n, s = W; k > 0; k--) {
-			if (m[k][s] != m[k - 1][s]) {
-				Attraction attraction = attractions.get(k - 1);
+		for (int i = n, w = W; i > 0; i--) {
+			if (m[i][w] != m[i - 1][w]) {
+				Attraction attraction = attractions.get(i - 1);
 				result.add(attraction);
 				totalImportance += attraction.importance();
 				totalTimeSpent += attraction.time();
-				s -= (int) (attraction.time() * 2);
+				w -= (int) (attraction.time() * 2);
 			}
 		}
 
