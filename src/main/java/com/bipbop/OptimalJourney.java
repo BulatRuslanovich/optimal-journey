@@ -32,13 +32,18 @@ public class OptimalJourney {
 
 		var answer = solution.solve(attractions, availableTime);
 
-		System.out.println("Optimal route:");
-		answer.result().forEach(System.out::println);
+		printInfo(solution, answer, availableTime);
+	}
 
-		System.out.printf("Total time spent: %.1f hours\n", answer.timeSpent());
-		System.out.printf("Total importance: %d\n", answer.totalImportance());
-		System.out.printf("Remaining time: %.1f hours\n", availableTime - answer.timeSpent());
-		System.out.printf("Method worked time: %d ns\n", answer.ns());
+	private static void printInfo(Solution solution, Answer answer, double availableTime) {
+		System.out.printf("Optimal route by \"%s\":%n", solution);
+		System.out.println("=".repeat(70));
+		answer.result().forEach(System.out::println);
+		System.out.println("=".repeat(70));
+		System.out.printf("Total time spent: %6.1f hours\n", answer.timeSpent());
+		System.out.printf("Total importance: %5d\n", answer.totalImportance());
+		System.out.printf("Remaining time: %7.1f hours\n", availableTime - answer.timeSpent());
+		System.out.printf("Method worked time: %.4f ms\n", (double)answer.ns() / 1000_000);
 	}
 
 	public static List<Attraction> loadAttractionsFromCSV(String fileName) {

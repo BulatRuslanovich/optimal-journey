@@ -66,4 +66,9 @@ public class ZeroOneKnapsack implements Solution {
 		long end = System.nanoTime();
 		return new Answer(result, totalImportance, totalTimeSpent, end - begin);
 	}
+
+	@Override
+	public String toString() {
+		return "Knapsack 0-1";
+	}
 }
